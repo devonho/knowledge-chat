@@ -1,7 +1,8 @@
 from langgraph.graph import StateGraph, START, END
 from langchain_community.tools.tavily_search import TavilySearchResults
-from stategraph.nodes import MyBot, BasicToolNode
-from stategraph import State
+from knowledgechat.stategraph.nodes import MyBot, BasicToolNode
+from knowledgechat.stategraph.edges import route_tools
+from knowledgechat.stategraph import State
 
 class MyGraph:
     def get():
@@ -18,6 +19,7 @@ class MyGraph:
 
         graph_builder.add_edge(START, "chatbot")
         graph_builder.add_edge("chatbot", END)
+        graph_builder.add_conditional_edges("chatbot", route_tools,{"tools": "tools", END: END})
 
         graph = graph_builder.compile()
 

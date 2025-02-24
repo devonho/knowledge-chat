@@ -1,2 +1,2 @@
-from stategraph.state import State
-from stategraph.mygraph import MyGraph
+from knowledgechat.stategraph.state import State
+from knowledgechat.stategraph.mygraph import MyGraph

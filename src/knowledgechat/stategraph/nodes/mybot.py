@@ -1,5 +1,5 @@
 from langchain_anthropic import ChatAnthropic
-from stategraph import State
+from knowledgechat.stategraph import State
 
 class MyBot:
     def __init__(self, tools: list):
