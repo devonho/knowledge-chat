@@ -9,3 +9,5 @@ class State(TypedDict):
     (in this case, it appends messages to the list, rather than overwriting them)
     '''
     messages: Annotated[list, add_messages]
+    name: str
+    birthday: str

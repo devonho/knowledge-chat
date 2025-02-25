@@ -3,9 +3,17 @@ from stategraph import MyGraph
 class Main:
     def main():
         def stream_graph_updates(graph, user_input: str):
-            for event in graph.stream({"messages": [{"role": "user", "content": user_input}]}):
-                for value in event.values():
-                    print("Assistant:", value["messages"][-1].content)        
+            config = {"configurable": {"thread_id": "1"}}
+            events = graph.stream({"messages": [{"role": "user", "content": user_input}]}, 
+                                  config=config,
+                                  stream_mode="values")
+            for event in events:
+                event["messages"][-1].pretty_print()
+                    
+                #for value in event.values():
+                    # for message in value:
+                    #     print(str(type(message)) + ": " + message.content)
+                    #print("Assistant:", value["messages"][-1].content)        
 
         graph = MyGraph.get()
         while True:
