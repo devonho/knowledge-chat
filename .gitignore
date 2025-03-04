@@ -5,3 +5,9 @@ __pycache__
 poetry.lock
 
 .vscode/
+
+neo4j_data/
+
+data/
+
+.ipynb_checkpoints
