@@ -11,3 +11,7 @@ neo4j_data/
 data/
 
 .ipynb_checkpoints
+
+token.json
+
+creds/

@@ -8,10 +8,12 @@ from knowledgechat.stategraph.nodes import MyBot, BasicToolNode
 from knowledgechat.stategraph.edges import route_tools
 from knowledgechat.stategraph import State
 
+from knowledgechat.tools import get_gmail_tools
+
 class MyGraph:
     def get():
         memory = MemorySaver()
-        tools=[TavilySearchResults(max_results=2)]
+        tools=[TavilySearchResults(max_results=2)] + get_gmail_tools()
         bot_node = MyBot(tools)
         #tool_node = BasicToolNode(tools)
         tool_node = ToolNode(tools=tools)
