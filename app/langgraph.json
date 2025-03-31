@@ -1,0 +1,5 @@
+{
+    "dependencies":["."],
+    "graphs": {"agent": "./knowledgechat/main.py:get_graph"},
+    "env": ".env"
+}

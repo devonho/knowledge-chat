@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "knowledge-chat"
+version = "0.1.0"
+description = "knowledge-chat"
+authors = [
+   "devonho"
+]
+packages = [
+    { include = "knowledgechat" },
+]
+
+[tool.poetry.dependencies]
+python = ">=3.11.11,<4.0"
+langgraph = "^0.3.21"
+langsmith = "^0.3.19"
+langchain-anthropic = "^0.3.10"
+langchain-community = "^0.3.20"
+langchain-google-community = {extras = ["gmail"], version = "^2.0.7"}
+langgraph-prebuilt = "^0.1.7"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+

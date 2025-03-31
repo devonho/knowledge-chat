@@ -1,4 +1,7 @@
-from stategraph import MyGraph
+from knowledgechat.stategraph.mygraph import MyGraph
+
+def get_graph():
+    return MyGraph.get()
 
 class Main:
     def main():
