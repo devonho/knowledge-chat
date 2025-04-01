@@ -11,9 +11,9 @@ from knowledgechat.stategraph import State
 from knowledgechat.tools import get_gmail_tools
 
 class MyGraph:
-    def get():
+    def get(google_creds_path="./creds/credentials.json"):
         memory = MemorySaver()
-        tools=[TavilySearchResults(max_results=2)] + get_gmail_tools()
+        tools=[TavilySearchResults(max_results=2)] + get_gmail_tools(google_creds_path)
         bot_node = MyBot(tools)
         #tool_node = BasicToolNode(tools)
         tool_node = ToolNode(tools=tools)

@@ -52,7 +52,7 @@ services:
           - .env 
       volumes:
           - ./creds/credentials.json:/google_creds/credentials.json
-          - ./token.json:/google_creds/token.json
+          - ./creds/token.json:/google_creds/token.json
       environment: 
           REDIS_URI: redis://langgraph-redis:6379 
           LANGSMITH_API_KEY: ${LANGSMITH_API_KEY} 

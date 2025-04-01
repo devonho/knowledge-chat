@@ -1,7 +1,11 @@
+import os
+
 from knowledgechat.stategraph.mygraph import MyGraph
 
+google_creds_path = os.getenv("GOOGLE_CREDS_PATH", "./creds/credentials.json")
+
 def get_graph():
-    return MyGraph.get()
+    return MyGraph.get(google_creds_path)
 
 class Main:
     def main():
@@ -18,7 +22,7 @@ class Main:
                     #     print(str(type(message)) + ": " + message.content)
                     #print("Assistant:", value["messages"][-1].content)        
 
-        graph = MyGraph.get()
+        graph = MyGraph.get(google_creds_path)
         while True:
             try:
                 user_input = input("User: ")
