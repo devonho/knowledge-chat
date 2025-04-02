@@ -9,11 +9,12 @@ from knowledgechat.stategraph.edges import route_tools
 from knowledgechat.stategraph import State
 
 from knowledgechat.tools import get_gmail_tools
+from knowledgechat.tools import search_resume_graph_database
 
 class MyGraph:
     def get(google_creds_path="./creds/credentials.json"):
         memory = MemorySaver()
-        tools=[TavilySearchResults(max_results=2)] + get_gmail_tools(google_creds_path)
+        tools=[TavilySearchResults(max_results=2), search_resume_graph_database] + get_gmail_tools(google_creds_path)
         bot_node = MyBot(tools)
         #tool_node = BasicToolNode(tools)
         tool_node = ToolNode(tools=tools)

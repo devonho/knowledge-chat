@@ -1,1 +1,2 @@
 from knowledgechat.tools.gmail import get_gmail_tools
+from knowledgechat.tools.resume_db import search_resume_graph_database

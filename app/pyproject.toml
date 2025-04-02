@@ -17,6 +17,8 @@ langchain-anthropic = "^0.3.10"
 langchain-community = "^0.3.20"
 langchain-google-community = {extras = ["gmail"], version = "^2.0.7"}
 langgraph-prebuilt = "^0.1.7"
+langchain-neo4j = "^0.4.0"
+neo4j = "^5.28.1"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
