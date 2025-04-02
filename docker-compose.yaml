@@ -2,14 +2,19 @@ volumes:
     langgraph-data: 
         driver: local 
 services:
-  neo4j:
+  langgraph-neo4j:
     image: neo4j:latest
-    container_name: neo4j
     ports:
       - "7474:7474"
       - "7687:7687"
     volumes:
       - ./neo4j_data:/data
+    healthcheck:
+        test: wget http://localhost:7474 || exit 1
+        interval: 1s
+        timeout: 10s
+        retries: 20
+        start_period: 3s      
     environment:
       - NEO4J_AUTH=neo4j/neo4j!!!!
       - NEO4J_apoc_export_file_enabled=true
@@ -46,8 +51,10 @@ services:
       depends_on: 
           langgraph-redis: 
               condition: service_healthy 
-          langgraph-postgres: 
+          langgraph-postgres:
               condition: service_healthy 
+          langgraph-neo4j:
+              condition: service_healthy
       env_file: 
           - .env 
       volumes:
@@ -59,5 +66,6 @@ services:
           POSTGRES_URI: postgres://postgres:postgres@langgraph-postgres:5432/postgres?sslmode=disable       
           NEO4J_USERNAME: "neo4j"
           NEO4J_PASSWORD: "neo4j!!!!"
-          NEO4J_URI: "bolt://localhost:7687"
+          NEO4J_URI: bolt://langgraph-neo4j:7687
+          GOOGLE_CREDS_PATH: "/google_creds/credentials.json"
         

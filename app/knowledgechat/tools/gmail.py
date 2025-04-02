@@ -18,7 +18,9 @@ def get_gmail_tools(google_creds_path="./creds/credentials.json"):
     credentials = get_gmail_credentials(
         token_file=token_file_path,
         scopes=["https://www.googleapis.com/auth/gmail.readonly",
-                "https://www.googleapis.com/auth/gmail.send"],
+                "https://www.googleapis.com/auth/gmail.send",
+                "https://www.googleapis.com/auth/gmail.compose",
+                "https://www.googleapis.com/auth/gmail.addons.current.action.compose"],
         client_secrets_file=google_creds_path,
     )
     api_resource = build_resource_service(credentials=credentials)
